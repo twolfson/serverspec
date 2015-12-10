@@ -118,7 +118,7 @@ module Serverspec::Type
     end
 
     def mode
-      @runner.get_mode(@name).stdout.strip
+      @runner.get_file_mode(@name).stdout.strip
     end
 
     def mtime
@@ -127,11 +127,11 @@ module Serverspec::Type
     end
 
     def owner_user
-      @runner.get_owner_user(@name).stdout.strip
+      @runner.get_file_owner_user(@name).stdout.strip
     end
 
     def owner_group
-      @runner.get_owner_group(@name).stdout.strip
+      @runner.get_file_owner_group(@name).stdout.strip
     end
 
     def size

@@ -339,11 +339,19 @@ end
 
 describe file('/etc/passwd') do
   let(:stdout) { Time.now.to_i.to_s }
-  its(:mode) { should == 644 }
   its(:mtime) { should > DateTime.now - 1 }
+end
+
+describe file('/etc/passwd') do
+  its(:mode) { should == '644' }
+end
+describe file('/etc/passwd') do
   its(:owner_user) { should == 'root' }
+end
+describe file('/etc/passwd') do
   its(:owner_group) { should == 'root' }
 end
+
 
 describe file('/etc/passwod') do
   let(:stdout) { 100.to_s }
