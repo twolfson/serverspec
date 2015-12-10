@@ -338,7 +338,7 @@ EOF
 end
 
 describe file('/etc/passwd') do
-  let(:stdout) { '644' }
+  let(:stdout) { "644\r\n" }
   its(:mode) { should eq '644' }
 end
 
@@ -348,12 +348,12 @@ describe file('/etc/passwd') do
 end
 
 describe file('/etc/passwd') do
-  let(:stdout) { 'root' }
+  let(:stdout) { "root\r\n" }
   its(:owner_user) { should eq 'root' }
 end
 
 describe file('/etc/passwd') do
-  let(:stdout) { 'root' }
+  let(:stdout) { "root\r\n" }
   its(:owner_group) { should eq 'root' }
 end
 
