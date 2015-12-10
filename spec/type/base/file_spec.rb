@@ -342,22 +342,6 @@ describe file('/etc/passwd') do
   its(:mtime) { should > DateTime.now - 1 }
 end
 
-describe file('/etc/passwd') do
-  let(:stdout) { '644' }
-  its(:mode) { should == '644' }
-end
-
-describe file('/etc/passwd') do
-  let(:stdout) { 'root' }
-  its(:owner_user) { should == 'root' }
-end
-
-describe file('/etc/passwd') do
-  let(:stdout) { 'root' }
-  its(:owner_group) { should == 'root' }
-end
-
-
 describe file('/etc/passwod') do
   let(:stdout) { 100.to_s }
   its(:size) { should > 0 }
@@ -369,4 +353,20 @@ describe file('/etc/passwd') do
       should be_immutable
     }.to raise_exception
   end
+end
+
+
+describe 'tmp' do
+  it "should have proper permissions" do
+    puts file('/etc/passwd').mode
+  end
+  # its(:mode) { should eq 644 }
+end
+
+describe file('/etc/passwd') do
+  its(:owner_user) { should eq 'root' }
+end
+
+describe file('/etc/passwd') do
+  its(:owner_group) { should eq 'root' }
 end
