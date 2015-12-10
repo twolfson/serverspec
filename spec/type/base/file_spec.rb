@@ -320,6 +320,11 @@ describe file('invalid-file') do
 end
 
 describe file('/etc/passwd') do
+  let(:stdout) { "root\r\n" }
+  its(:group) { should eq 'root' }
+end
+
+describe file('/etc/passwd') do
   let(:stdout) {<<EOF
 root:x:0:0:root:/root:/bin/bash
 bin:x:1:1:bin:/bin:/sbin/nologin
@@ -349,12 +354,7 @@ end
 
 describe file('/etc/passwd') do
   let(:stdout) { "root\r\n" }
-  its(:owner_user) { should eq 'root' }
-end
-
-describe file('/etc/passwd') do
-  let(:stdout) { "root\r\n" }
-  its(:owner_group) { should eq 'root' }
+  its(:owner) { should eq 'root' }
 end
 
 describe file('/etc/passwod') do

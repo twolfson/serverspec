@@ -113,6 +113,10 @@ module Serverspec::Type
       @content
     end
 
+    def group
+      @runner.get_file_owner_group(@name).stdout.strip
+    end
+
     def version?(version)
       @runner.check_file_has_version(@name, version)
     end
@@ -126,12 +130,8 @@ module Serverspec::Type
       DateTime.strptime(d, '%s').new_offset(DateTime.now.offset)
     end
 
-    def owner_user
+    def owner
       @runner.get_file_owner_user(@name).stdout.strip
-    end
-
-    def owner_group
-      @runner.get_file_owner_group(@name).stdout.strip
     end
 
     def size
