@@ -344,7 +344,7 @@ end
 
 describe file('/etc/passwd') do
   let(:stdout) { "644\r\n" }
-  its(:mode) { should eq '644' }
+  its(:mode) { should eq 00644 }
 end
 
 describe file('/etc/passwd') do
