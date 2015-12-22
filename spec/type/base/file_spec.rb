@@ -333,6 +333,7 @@ nobody:x:99:99:Nobody:/:/sbin/nologin
 dbus:x:81:81:System message bus:/:/sbin/nologin
 EOF
   }
+
   its(:content) { should match /root:x:0:0/ }
 end
 
