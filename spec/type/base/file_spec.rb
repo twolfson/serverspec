@@ -342,6 +342,11 @@ EOF
   its(:content) { should match /root:x:0:0/ }
 end
 
+describe file('/etc/pam.d/system-auth') do
+  let(:stdout) { "/etc/pam.dsystem-auth-ac\r\n" }
+  its(:link_target) { should eq '/etc/pam.dsystem-auth-ac' }
+end
+
 describe file('/etc/passwd') do
   let(:stdout) { "644\r\n" }
   its(:mode) { should eq 00644 }

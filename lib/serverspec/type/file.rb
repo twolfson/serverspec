@@ -121,6 +121,10 @@ module Serverspec::Type
       @runner.check_file_has_version(@name, version)
     end
 
+    def link_target
+      @runner.get_file_link_target(@name).stdout.strip
+    end
+
     def mode
       @runner.get_file_mode(@name).stdout.strip
     end
